@@ -1,0 +1,24 @@
+Package: rslab
+Title: Functions for Respiratory System Physiology Lab
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Kittipos",
+           family = "Sirivongrungson",
+           role = c("aut", "cre"),
+           email = "ki11ip0.s.a.s@gmail.com")
+Description: This package contains functions related to respiratory system
+    physiology such as BTPS calculator and Metabolic rate calculator.
+License: MIT + file LICENSE
+Depends: 
+    R (>= 2.10)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    dplyr,
+    tibble,
+    magrittr,
+    purrr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
