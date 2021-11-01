@@ -10,7 +10,7 @@ get_btps_factor(temp)
 \item{temp}{(Numeric) Room Temperature in celsius when gas was collected.}
 }
 \value{
-A numeric factor to convert volume of gas to 37 celsius saturated
+A numeric factor to convert volume of gas to 37 celsius saturated with water vapor
 }
 \description{
 Compute correction factor to convert gas volumes from room temperature saturated to BTPS, assuming that gas was sampled at barometric pressure of 760 mmHg.

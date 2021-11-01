@@ -19,7 +19,7 @@ get_oxycons(
 
 \item{y}{Displacement of tracing in y-direction (in millimeter).}
 
-\item{paper_speed}{Paper speed of the kymograph (in millimeter/minute), 25 ml/min by default.}
+\item{paper_speed}{Paper speed of the kymograph (in millimeter/minute), 25 mm/min by default.}
 
 \item{unit}{(Character) Unit of the oxygen consumption to return, e.g. L/hr (default).}
 

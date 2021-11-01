@@ -72,7 +72,7 @@ lung_vol_atps_btps <- function(temp = NA,
 #'
 #' @param temp (Numeric) Room Temperature in celsius when gas was collected.
 #'
-#' @return A numeric factor to convert volume of gas to 37 celsius saturated
+#' @return A numeric factor to convert volume of gas to 37 celsius saturated with water vapor
 #' @export
 #'
 #' @examples
