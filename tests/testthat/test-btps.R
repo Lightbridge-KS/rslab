@@ -16,7 +16,9 @@ test_that("Test lung_vol_atps_btps()",{
                                      EC = 12,
                                      VC = 10),
                   "data.frame")
-
+  # Error
+  ## Check any args has length more than 1
+  expect_error(lung_vol_atps_btps(temp = 30:31), "All arguments must be length = 1")
   ## Check Invalid Lung Volume
   expect_error(lung_vol_atps_btps(EC = 5, TV = 10), "Not a valid lung volumn.")
   expect_error(lung_vol_atps_btps(VC = 5, IC = 10), "Not a valid lung volumn.")

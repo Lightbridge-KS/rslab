@@ -6,8 +6,9 @@
 #' Convert Lung Volume from ATPS to BTPS
 #'
 #' This function converts several lung volume parameters at ATPS (Ambient Temperature and Pressure Saturated) to
-#' BTPS (Body Temperature, Pressure, water vapor Saturated).
+#' lung volume at BTPS (Body Temperature, Pressure, water vapor Saturated).
 #'
+#' @param temp (Numeric) Room Temperature in celsius when gas was collected.
 #' @param FEV1 (numeric) Forced Expiratory Volume in 1 second (L).
 #' @param FVC (numeric) Forced Vital Capacity (L)
 #' @param PEF (numeric) Peak Expiratory Flow (L/min)
@@ -21,7 +22,8 @@
 #'
 #' @examples
 #' lung_vol_atps_btps(FEV1 = 5, FVC = 10, PEF = 4, TV = 9, IC = 10, EC = 12, VC = 10)
-lung_vol_atps_btps <- function(FEV1 = NA,
+lung_vol_atps_btps <- function(temp = NA,
+                               FEV1 = NA,
                                FVC = NA,
                                PEF = NA,
                                TV = NA,
@@ -30,6 +32,10 @@ lung_vol_atps_btps <- function(FEV1 = NA,
                                VC = NA
 ) {
 
+
+  args_len1 <- all(sapply(list(temp, FEV1, FVC, PEF, TV,  IC,  EC,  VC), length) == 1)
+
+  if(!args_len1) stop("All arguments must be length = 1", call. = FALSE)
   # Validate Lung Volume that VC ≥ IC ≥ TV and EC ≥ TV
   valid_lung_vol <- all((VC >= IC), (IC >= TV), (EC >= TV), na.rm = TRUE)
   if(!valid_lung_vol) stop("Not a valid lung volumn.", call. = FALSE)
@@ -46,10 +52,12 @@ lung_vol_atps_btps <- function(FEV1 = NA,
                 VC = VC)
   unit <- c(rep("L", 2), "%", "L/min", rep("L", 6))
 
+  btps_factor <- get_btps_factor(temp = temp)
+
   atps_val %>%
     tibble::enframe("Parameter", "ATPS") %>%
     # Compute BTPS & Add Unit
-    dplyr::mutate(BTPS = sapply(ATPS, get_btps_factor),
+    dplyr::mutate(BTPS = ATPS * btps_factor,
                   Unit = unit)
 
 }

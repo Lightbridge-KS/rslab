@@ -5,6 +5,7 @@
 \title{Convert Lung Volume from ATPS to BTPS}
 \usage{
 lung_vol_atps_btps(
+  temp = NA,
   FEV1 = NA,
   FVC = NA,
   PEF = NA,
@@ -15,6 +16,8 @@ lung_vol_atps_btps(
 )
 }
 \arguments{
+\item{temp}{(Numeric) Room Temperature in celsius when gas was collected.}
+
 \item{FEV1}{(numeric) Forced Expiratory Volume in 1 second (L).}
 
 \item{FVC}{(numeric) Forced Vital Capacity (L)}
@@ -34,7 +37,7 @@ A Tibble
 }
 \description{
 This function converts several lung volume parameters at ATPS (Ambient Temperature and Pressure Saturated) to
-BTPS (Body Temperature, Pressure, water vapor Saturated).
+lung volume at BTPS (Body Temperature, Pressure, water vapor Saturated).
 }
 \examples{
 lung_vol_atps_btps(FEV1 = 5, FVC = 10, PEF = 4, TV = 9, IC = 10, EC = 12, VC = 10)
