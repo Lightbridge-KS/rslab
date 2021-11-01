@@ -45,7 +45,7 @@ btps_factor27 <- get_btps_factor(temp = 27)
 btps_factor27
 ```
 
-In fact, If Tidal Volume (TV) was measured as 500 ml at room temperature of 27 degree celsius, the 
+If Tidal Volume (TV) was measured as 500 ml at room temperature of 27 degree celsius, the 
 TV in the lung at BTPS (body temperature, pressure, water vapor saturated) would be:
 
 ```{r}

@@ -39,9 +39,9 @@ btps_factor27
 #> [1] 1.063
 ```
 
-In fact, If Tidal Volume (TV) was measured as 500 ml at room temperature
-of 27 degree celsius, the TV in the lung at BTPS (body temperature,
-pressure, water vapor saturated) would be:
+If Tidal Volume (TV) was measured as 500 ml at room temperature of 27
+degree celsius, the TV in the lung at BTPS (body temperature, pressure,
+water vapor saturated) would be:
 
 ``` r
 # TV (ml) at BTPS
