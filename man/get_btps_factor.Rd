@@ -7,7 +7,7 @@
 get_btps_factor(temp)
 }
 \arguments{
-\item{temp}{(Numeric) Room Temperature when gas was collected.}
+\item{temp}{(Numeric) Room Temperature in celsius when gas was collected.}
 }
 \value{
 A numeric factor to convert volume of gas to 37 celsius saturated
@@ -20,4 +20,7 @@ Compute correction factor to convert gas volumes from room temperature saturated
 get_btps_factor(20)
 # If temp not in lookup table, use prediction by linear model.
 get_btps_factor(20.5)
+# Input can be vectorised
+get_btps_factor(c(20.5, NA, 21:22))
+
 }

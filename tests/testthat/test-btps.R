@@ -30,11 +30,13 @@ test_that("Test lung_vol_atps_btps()",{
 test_that("test get_btps_factor()",{
 
   # Check from Randomly generated numbers
-  expect_type(purrr::map_dbl(runif(100, 0, 50), get_btps_factor), "double")
+  expect_type(get_btps_factor(runif(10, 0, 50)), "double")
+  # Check how it handle `NA`
+  expect_type(get_btps_factor(c(20,NA, 21:22)), "double")
   # Check Value from Lookup
-  expect_identical(purrr::map_dbl(20:37, get_btps_factor), btps_df$Factor_37)
+  expect_identical(get_btps_factor(20:37), btps_df$Factor_37)
+
   # Check Error Msg
-  expect_error(get_btps_factor(1:20), "`temp` must be a numeric vector of length 1.")
-  expect_error(get_btps_factor("hello"), "`temp` must be a numeric vector of length 1.")
+  expect_error(get_btps_factor("hello"), "`temp` must be a numeric vector.")
 
 })

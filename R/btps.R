@@ -62,7 +62,7 @@ lung_vol_atps_btps <- function(FEV1 = NA,
 #'
 #' Compute correction factor to convert gas volumes from room temperature saturated to BTPS, assuming that gas was sampled at barometric pressure of 760 mmHg.
 #'
-#' @param temp (Numeric) Room Temperature when gas was collected.
+#' @param temp (Numeric) Room Temperature in celsius when gas was collected.
 #'
 #' @return A numeric factor to convert volume of gas to 37 celsius saturated
 #' @export
@@ -72,31 +72,50 @@ lung_vol_atps_btps <- function(FEV1 = NA,
 #' get_btps_factor(20)
 #' # If temp not in lookup table, use prediction by linear model.
 #' get_btps_factor(20.5)
+#' # Input can be vectorised
+#' get_btps_factor(c(20.5, NA, 21:22))
+#'
 get_btps_factor <- function(temp) {
 
   ## Validate Input
-  not_valid <- !(length(temp) == 1L && is.numeric(temp))
-  if(not_valid) stop("`temp` must be a numeric vector of length 1.", call. = FALSE)
+  na_len1 <- (length(temp) == 1L) && is.na(temp)
+  not_valid <- !is.numeric(temp) && !na_len1
+  if(not_valid) stop("`temp` must be a numeric vector.", call. = FALSE)
 
-  ## If `temp` in lookup table
-  if(temp %in% btps_df[["Gas_temp_c"]]){
+  ## Iterate every element of `temp`
+  out <- vector("numeric", length(temp))
+  for (i in seq_along(temp)) {
 
-    # Use `Factor_37` from lookup table
-    factor_37_lookup <- btps_df[btps_df[["Gas_temp_c"]] == temp, ][["Factor_37"]]
-    return(factor_37_lookup)
+    temp_i <- temp[[i]]
 
-  }else{
-    ## If not, fit linear model of `Factor_37` on `Gas_temp_c` and then predict
-    lm_fit <- lm(Factor_37 ~ Gas_temp_c, data = btps_df)
-    newpoint <- data.frame(Gas_temp_c = temp)
+    ## If `NA` assign it, then skip to next value
+    if(is.na(temp_i)){
+      out[[i]] <- NA
+      next
+    }
 
-    factor_37_pred <- unname(predict(lm_fit, newdata = newpoint, interval = "none"))
-    return(factor_37_pred)
+    ## If `temp` in lookup table
+    if (temp_i %in% btps_df[["Gas_temp_c"]]) {
+
+      # Use `Factor_37` from lookup table
+      factor_37_lookup_i <- btps_df[btps_df[["Gas_temp_c"]] == temp_i, ][["Factor_37"]]
+      out[[i]] <- factor_37_lookup_i
+
+    } else {
+      ## If not, fit linear model of `Factor_37` on `Gas_temp_c` and then predict
+      lm_fit <- lm(Factor_37 ~ Gas_temp_c, data = btps_df)
+      newpoint <- data.frame(Gas_temp_c = temp_i)
+
+      factor_37_pred_i <- unname(predict(lm_fit, newdata = newpoint, interval = "none"))
+      out[[i]] <- factor_37_pred_i
+
+    }
 
   }
 
-}
+  return(out)
 
+}
 
 #' BTPS Correction factor Lookup Table
 #'
