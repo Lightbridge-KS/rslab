@@ -6,7 +6,7 @@
 #'
 #' @param x Displacement of tracing in x-direction (in millimeter).
 #' @param y Displacement of tracing in y-direction (in millimeter).
-#' @param paper_speed Paper speed of the kymograph (in millimeter/minute).
+#' @param paper_speed Paper speed of the kymograph (in millimeter/minute), 25 ml/min by default.
 #' @param unit (Character) Unit of the oxygen consumption to return, e.g. L/hr (default).
 #' @param condition (Character) Environmental condition to calculate oxygen consumption that affect gas volume, must be one of:
 #' * \strong{ATPS:} Volume of gas at ambient (A) temperature (T) (room temperature) and barometric pressure (P) saturated (S) with water vapor.
