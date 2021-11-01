@@ -18,8 +18,8 @@ Imports:
     dplyr,
     tibble,
     magrittr,
-    purrr,
-    crayon
+    crayon,
+    stats
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
