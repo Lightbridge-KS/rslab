@@ -4,3 +4,10 @@ url: https://lightbridge-ks.github.io/rslab
 template:
   params:
     bootswatch: cosmo
+
+# Navigation Bar
+navbar:
+  right:
+   - icon: fa-github
+     href: https://github.com/Lightbridge-KS/rslab
+
