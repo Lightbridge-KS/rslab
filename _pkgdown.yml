@@ -1,2 +1,6 @@
 url: https://lightbridge-ks.github.io/rslab
 
+# Template
+template:
+  params:
+    bootswatch: cosmo
