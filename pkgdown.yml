@@ -2,7 +2,7 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-11-28T14:50Z
+last_built: 2021-11-28T15:00Z
 urls:
   reference: https://lightbridge-ks.github.io/rslab/reference
   article: https://lightbridge-ks.github.io/rslab/articles
