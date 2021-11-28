@@ -6,3 +6,7 @@
 ^my_dev$
 ^my_data$
 ^README\.Rmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
