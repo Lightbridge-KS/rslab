@@ -6,8 +6,14 @@
 \alias{rslab-package}
 \title{rslab: Functions for Respiratory System Physiology Lab}
 \description{
-This package contains functions related to respiratory system
-    physiology such as BTPS calculator and Metabolic rate calculator.
+This package contains functions related to respiratory system physiology such as BTPS calculator and Metabolic rate calculator.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://lightbridge-ks.github.io/rslab}
+}
+
 }
 \author{
 \strong{Maintainer}: Kittipos Sirivongrungson \email{ki11ip0.s.a.s@gmail.com}
