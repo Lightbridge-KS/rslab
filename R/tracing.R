@@ -23,9 +23,9 @@
 #' @param seed (Numeric) If provided `epsilon_sd`, It is a seed to generated random error variation.
 #'
 #' @return A data.frame with columns:
-#' *\strong{x}: x-axis data of the respiratory wave tracing (in milimeter)
-#' *\strong{y}: y-axis data of the respiratory wave tracing (in milimeter)
-#' *\strong{y_O2_line}: y-axis data of the oxygen-line (in milimeter)
+#' * \strong{x}: x-axis data of the respiratory wave tracing (in milimeter)
+#' * \strong{y}: y-axis data of the respiratory wave tracing (in milimeter)
+#' * \strong{y_O2_line}: y-axis data of the oxygen-line (in milimeter)
 #' @export
 #'
 #' @examples

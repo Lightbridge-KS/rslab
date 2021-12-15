@@ -46,9 +46,11 @@ sim_Harvard_tracing(
 }
 \value{
 A data.frame with columns:
-*\strong{x}: x-axis data of the respiratory wave tracing (in milimeter)
-*\strong{y}: y-axis data of the respiratory wave tracing (in milimeter)
-*\strong{y_O2_line}: y-axis data of the oxygen-line (in milimeter)
+\itemize{
+\item \strong{x}: x-axis data of the respiratory wave tracing (in milimeter)
+\item \strong{y}: y-axis data of the respiratory wave tracing (in milimeter)
+\item \strong{y_O2_line}: y-axis data of the oxygen-line (in milimeter)
+}
 }
 \description{
 This function simulates volume-time tracing data produced by breathing of a hypothetical subject as recorded by the Harvard spirometer.
