@@ -20,6 +20,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -32,25 +34,19 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rslab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Lightbridge-KS/rslab">
+  <a href="https://github.com/Lightbridge-KS/rslab" class="external-link">
     <span class="fa fa-github"></span>
      
   </a>
@@ -67,26 +63,26 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="rslab" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#rslab" class="anchor"></a>rslab</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="rslab">rslab<a class="anchor" aria-label="anchor" href="#rslab"></a>
+</h1></div>
 <!-- badges: start -->
 
 <p>R 📦 for calculation of various respiratory physiology parameters.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Lightbridge-KS/rslab"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="btps-calculator" class="section level2">
-<h2 class="hasAnchor">
-<a href="#btps-calculator" class="anchor"></a>BTPS Calculator</h2>
+<div class="section level2">
+<h2 id="btps-calculator">BTPS Calculator<a class="anchor" aria-label="anchor" href="#btps-calculator"></a>
+</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lightbridge-ks.github.io/rslab">rslab</a></span><span class="op">)</span></code></pre></div>
-<p><a href="https://nddmed.com/_Resources/Persistent/8a716ac3fd123ce0becd7b56596582d4fc4c0c47/appnote-btps-correction-v01r.pdf">BTPS correction factor</a> is used to convert flow and volume measured at ambient conditions to the conditions within the lungs.</p>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lightbridge-ks.github.io/rslab">rslab</a></span><span class="op">)</span></code></pre></div>
+<p><a href="https://nddmed.com/_Resources/Persistent/8a716ac3fd123ce0becd7b56596582d4fc4c0c47/appnote-btps-correction-v01r.pdf" class="external-link">BTPS correction factor</a> is used to convert flow and volume measured at ambient conditions to the conditions within the lungs.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># BTPS correction factor at room temperature = 27 degree celsius</span>
 <span class="va">btps_factor27</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_btps_factor.html">get_btps_factor</a></span><span class="op">(</span>temp <span class="op">=</span> <span class="fl">27</span><span class="op">)</span>
@@ -123,13 +119,13 @@
 <span class="co">#&gt;  9 ERV         2     2.13  L    </span>
 <span class="co">#&gt; 10 VC          4.5   4.78  L</span></code></pre></div>
 </div>
-<div id="metabolic-rate--oxygen-consumption-calculator" class="section level2">
-<h2 class="hasAnchor">
-<a href="#metabolic-rate--oxygen-consumption-calculator" class="anchor"></a>Metabolic Rate &amp; Oxygen Consumption Calculator</h2>
-<p>In a laboratory experiment using <a href="https://www.somatco.com/Recording-Spirometer-50-1833-50-1817.pdf">Harvard Spirometer</a>, this package provides functions to calculate metabolic rate and oxygen consumption by input a displacement in x-and y-direction of Harvard spirometer tracing, height and weight of the subject, and environmental conditions which are temperature and barometric pressure.</p>
-<div id="oxygen-consumption" class="section level3">
-<h3 class="hasAnchor">
-<a href="#oxygen-consumption" class="anchor"></a>Oxygen Consumption</h3>
+<div class="section level2">
+<h2 id="metabolic-rate--oxygen-consumption-calculator">Metabolic Rate &amp; Oxygen Consumption Calculator<a class="anchor" aria-label="anchor" href="#metabolic-rate--oxygen-consumption-calculator"></a>
+</h2>
+<p>In a laboratory experiment using <a href="https://www.somatco.com/Recording-Spirometer-50-1833-50-1817.pdf" class="external-link">Harvard Spirometer</a>, this package provides functions to calculate metabolic rate and oxygen consumption by input a displacement in x-and y-direction of Harvard spirometer tracing, height and weight of the subject, and environmental conditions which are temperature and barometric pressure.</p>
+<div class="section level3">
+<h3 id="oxygen-consumption">Oxygen Consumption<a class="anchor" aria-label="anchor" href="#oxygen-consumption"></a>
+</h3>
 <p>In Harvard spirometer tracing, horizontal direction (x-direction) represents time (default paper speed = 25 mm/min) whereas vertical direction (y-direction) represents usage of oxygen (1 mm = 30 ml of oxygen). With a little bit of calculation, we can derived an oxygen consumption in unit of L/hr in the <strong>ATPS</strong> condition (<strong>A</strong>mbient <strong>T</strong>emperature and barometric <strong>P</strong>ressure <strong>S</strong>aturated with water vapor condition).</p>
 <p>You can use <code><a href="reference/get_oxycons.html">get_oxycons()</a></code> to calculate oxygen consumption and it will also provide other info printed to R console as well.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -144,9 +140,9 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Oxygen Consumption at ATPS = 240 L/hr</span></code></pre></div>
 </div>
-<div id="metabolic-rate" class="section level3">
-<h3 class="hasAnchor">
-<a href="#metabolic-rate" class="anchor"></a>Metabolic Rate</h3>
+<div class="section level3">
+<h3 id="metabolic-rate">Metabolic Rate<a class="anchor" aria-label="anchor" href="#metabolic-rate"></a>
+</h3>
 <p>To calculate metabolic rate, we must first convert oxygen consumption <em>V̇</em><sub><em>o</em><sub>2</sub></sub> at <strong>ATPS</strong> to <strong>STPD</strong> (<strong>S</strong>tandard <strong>T</strong>emperature of 0°C and a barometric <strong>P</strong>ressure of 760 mmHg, and in a <strong>D</strong>ry state).</p>
 <p>STPD correction factor can be used to convert gas in ATPS to BTPS condition. It has a linear relationship with barometric pressure and temperature.</p>
 <p>Therefore, <code><a href="reference/get_STPD_factor.html">get_STPD_factor()</a></code> can be used to predict STPD factor using <code>baro</code> and <code>temp_c</code> as predictors. (It use multiple linear regression model behind the scene.)</p>
@@ -160,11 +156,13 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">oxycons</span> <span class="op">*</span> <span class="va">stpd_760_25</span> <span class="co"># Unit in L/hr</span>
 <span class="co">#&gt; [1] 211.9386</span></code></pre></div>
-<p>Finally, metabolic rate can be calculated by times an oxygen consumption <em>V̇</em><sub><em>o</em><sub>2</sub></sub> (L/hr) at STPD to a caloric equivalent of oxygen (Cal/hr) divided by Body Surface Area (BSA) in m<sup>2</sup>, which can be calculated by <a href="http://www-users.med.cornell.edu/~spon/picu/calc/bsacalc.htm">DuBois &amp; DuBois formula</a> (DuBois D, DuBois EF)</p>
+<p>Finally, metabolic rate can be calculated by times an oxygen consumption <em>V̇</em><sub><em>o</em><sub>2</sub></sub> (L/hr) at STPD to a caloric equivalent of oxygen (Cal/hr) divided by Body Surface Area (BSA) in m<sup>2</sup>, which can be calculated by <a href="http://www-users.med.cornell.edu/~spon/picu/calc/bsacalc.htm" class="external-link">DuBois &amp; DuBois formula</a> (DuBois D, DuBois EF)</p>
 <!-- $$ -->
 <!-- Met \ Rate \ (Cal/m^2/hr) = \frac{ \dot{V}_{o_2} (L/hr)  \times CalEqi \ O_2 \ (Cal/hr)}{ BSA \ (m^2) }  -->
 <!-- $$ -->
-<p><embed src="https://latex.codecogs.com/svg.latex?Met%20%5C%20Rate%20%5C%20%28Cal/m%5E2/hr%29%20%3D%20%5Cfrac%7B%20%5Cdot%7BV%7D_%7Bo_2%7D%20%28L/hr%29%20%5Ctimes%20CalEqi%20%5C%20O_2%20%5C%20%28Cal/hr%29%7D%7B%20BSA%20%5C%20%28m%5E2%29%20%7D"></embed></p>
+<div class="figure">
+<embed src="https://latex.codecogs.com/svg.latex?Met%20%5C%20Rate%20%5C%20%28Cal/m%5E2/hr%29%20%3D%20%5Cfrac%7B%20%5Cdot%7BV%7D_%7Bo_2%7D%20%28L/hr%29%20%5Ctimes%20CalEqi%20%5C%20O_2%20%5C%20%28Cal/hr%29%7D%7B%20BSA%20%5C%20%28m%5E2%29%20%7D"></embed><p class="caption">equation</p>
+</div>
 <p><code><a href="reference/get_metabolic_rate.html">get_metabolic_rate()</a></code> is a final wrapper function that calculate metabolic rate; moreover, it also reports metabolic rate along with oxygen consumption and other related parameters printed to the R console.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/get_metabolic_rate.html">get_metabolic_rate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">15</span>, <span class="co"># displacement in x-direction = 15 mm</span>
@@ -197,35 +195,47 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing rslab</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Kittipos Sirivongrungson <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Kittipos Sirivongrungson.</p>
+  <p></p>
+<p>Developed by Kittipos Sirivongrungson.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -233,6 +243,8 @@
 
   
 
+
+  
 
   </body>
 </html>

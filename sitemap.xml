@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lightbridge-ks.github.io/rslab/404.html</loc>
+  </url>
+  <url>
+    <loc>https://lightbridge-ks.github.io/rslab/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://lightbridge-ks.github.io/rslab/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://lightbridge-ks.github.io/rslab/authors.html</loc>
+  </url>
+  <url>
     <loc>https://lightbridge-ks.github.io/rslab/index.html</loc>
   </url>
   <url>
@@ -22,6 +34,9 @@
     <loc>https://lightbridge-ks.github.io/rslab/reference/get_oxycons.html</loc>
   </url>
   <url>
+    <loc>https://lightbridge-ks.github.io/rslab/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://lightbridge-ks.github.io/rslab/reference/lung_vol_atps_btps.html</loc>
   </url>
   <url>
@@ -29,6 +44,9 @@
   </url>
   <url>
     <loc>https://lightbridge-ks.github.io/rslab/reference/rslab-package.html</loc>
+  </url>
+  <url>
+    <loc>https://lightbridge-ks.github.io/rslab/reference/sim_Harvard_tracing.html</loc>
   </url>
   <url>
     <loc>https://lightbridge-ks.github.io/rslab/reference/stpd_df.html</loc>
