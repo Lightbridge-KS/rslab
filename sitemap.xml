@@ -40,6 +40,9 @@
     <loc>https://lightbridge-ks.github.io/rslab/reference/lung_vol_atps_btps.html</loc>
   </url>
   <url>
+    <loc>https://lightbridge-ks.github.io/rslab/reference/new_HarvardTracing.html</loc>
+  </url>
+  <url>
     <loc>https://lightbridge-ks.github.io/rslab/reference/pipe.html</loc>
   </url>
   <url>
@@ -53,5 +56,8 @@
   </url>
   <url>
     <loc>https://lightbridge-ks.github.io/rslab/reference/stpd_df_wide.html</loc>
+  </url>
+  <url>
+    <loc>https://lightbridge-ks.github.io/rslab/reference/tracing_info.html</loc>
   </url>
 </urlset>
