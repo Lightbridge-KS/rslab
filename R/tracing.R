@@ -3,7 +3,6 @@
 # Simulate Harvard Spirometer Tracing -------------------------------------
 
 
-
 #' Simulate Harvard Spirometer Tracing
 #'
 #' This function simulates volume-time tracing data produced by breathing of a hypothetical subject as recorded by the Harvard spirometer.
@@ -22,10 +21,11 @@
 #' @param epsilon_sd If provided as numeric, it is a standard deviation of an error term sampled from Gaussian distribution with `mean = 0`
 #' @param seed (Numeric) If provided `epsilon_sd`, It is a seed to generated random error variation.
 #'
-#' @return A data.frame with columns:
+#' @return A data.frame with "HarvardTracing" subclass which has 3 columns:
 #' * \strong{x}: x-axis data of the respiratory wave tracing (in milimeter)
 #' * \strong{y}: y-axis data of the respiratory wave tracing (in milimeter)
 #' * \strong{y_O2_line}: y-axis data of the oxygen-line (in milimeter)
+#'
 #' @export
 #'
 #' @examples
@@ -84,6 +84,18 @@ sim_Harvard_tracing <- function(f = "cos",
                                       by = seq_x_by, epsilon_sd = epsilon_sd)
 
   df_out[["y_O2_line"]] <- y_O2_line
-  df_out
 
+  # Add "HarvardTracing" Class & "tracing_info" attributes
+  df_out <- new_HarvardTracing(df_out,
+                               tracing_info = list(
+                                 f = get(as.character(f)),
+                                 x_delta = x_delta,
+                                 y_delta = y_delta,
+                                 y_intercept = y_intercept,
+                                 lambda = lambda, amp = amp
+                               )
+  )
+
+  df_out
 }
+

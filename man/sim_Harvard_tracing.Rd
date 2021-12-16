@@ -45,7 +45,7 @@ sim_Harvard_tracing(
 \item{seed}{(Numeric) If provided \code{epsilon_sd}, It is a seed to generated random error variation.}
 }
 \value{
-A data.frame with columns:
+A data.frame with "HarvardTracing" subclass which has 3 columns:
 \itemize{
 \item \strong{x}: x-axis data of the respiratory wave tracing (in milimeter)
 \item \strong{y}: y-axis data of the respiratory wave tracing (in milimeter)
