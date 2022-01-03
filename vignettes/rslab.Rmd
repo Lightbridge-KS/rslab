@@ -276,7 +276,7 @@ Where:
 - $\lambda$ = wave length (mm)
 - $x$ = x-axis values (mm)
 
-Given that 1 mm in the y-axis = 30 ml. and the amplitude ($A$) is half of tidal volume ($V_T$), 
+Given that 1 mm in the y-axis = 30 ml.
 
 Amplitude ($A$) can be expressed in terms of tidal volume ($V_T$) in ml.
 
@@ -284,7 +284,7 @@ $$
 A = \frac{-TV}{2 \times 30}
 $$
 
-$2$ was included in the denominator because amplitude equals the half of tidal volume, and the minus sign was added to flip the cosine function horizontally.
+$2$ was included in the denominator because amplitude equals to the half of tidal volume, and the minus sign was added to flip the cosine function horizontally.
 
 
 
