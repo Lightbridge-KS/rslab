@@ -47,21 +47,18 @@ sim_Harvard_tracing <- function(f = "cos",
   # X
   xmin <- 25 * t_start
   xmax <- 25 * t_end
-  x_delta <- xmax - xmin
   # Y
   ## Unit of Oxygen Consumption
   unit_conv <- switch (oxycons_unit,
                        "L/hr" = { 1000/60 },
                        "ml/min" = { 1 }
   )
-  y_delta <- oxycons * (x_delta/paper_speed) * (1/30) * unit_conv
-
   # Wave length & Amplitude
   lambda <- 25 / RR
   amp <- (-TV)/(2*30) # negative, so that cosine will filp upward
 
   # Linear Params
-  slope <- y_delta/x_delta
+  slope <- (oxycons/paper_speed) * (1/30) * unit_conv
   y_intercept <- y_int_O2_line + abs(amp)
 
   # Oxygen Line
