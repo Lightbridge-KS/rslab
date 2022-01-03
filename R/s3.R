@@ -9,6 +9,7 @@
 #' @param tracing_info list of values to be assigned to `tracing_info` attribute
 #'
 #' @return a `HarvardTracing` data frame
+#' @noRd
 #'
 new_HarvardTracing <- function(x,
                                tracing_info = list()
