@@ -41,6 +41,9 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
+  <a href="articles/rslab.html">Get started</a>
+</li>
+<li>
   <a href="reference/index.html">Reference</a>
 </li>
       </ul>
@@ -68,127 +71,31 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>R 📦 for calculation of various respiratory physiology parameters.</p>
+<blockquote>
+<p>An educational R package 📦 for calculate various respiratory physiology parameters.</p>
+</blockquote>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Lightbridge-KS/rslab"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Lightbridge-KS/rslab"</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="btps-calculator">BTPS Calculator<a class="anchor" aria-label="anchor" href="#btps-calculator"></a>
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lightbridge-ks.github.io/rslab">rslab</a></span><span class="op">)</span></code></pre></div>
-<p><a href="https://nddmed.com/_Resources/Persistent/8a716ac3fd123ce0becd7b56596582d4fc4c0c47/appnote-btps-correction-v01r.pdf" class="external-link">BTPS correction factor</a> is used to convert flow and volume measured at ambient conditions to the conditions within the lungs.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># BTPS correction factor at room temperature = 27 degree celsius</span>
-<span class="va">btps_factor27</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_btps_factor.html">get_btps_factor</a></span><span class="op">(</span>temp <span class="op">=</span> <span class="fl">27</span><span class="op">)</span>
-<span class="va">btps_factor27</span>
-<span class="co">#&gt; [1] 1.063</span></code></pre></div>
-<p>If Tidal Volume (TV) was measured as 500 ml at room temperature of 27 degree celsius, the TV in the lung at BTPS (body temperature, pressure, water vapor saturated) would be:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># TV (ml) at BTPS</span>
-<span class="fl">500</span> <span class="op">*</span> <span class="va">btps_factor27</span> 
-<span class="co">#&gt; [1] 531.5</span></code></pre></div>
-<p>If you want to convert several lung volumes or flow (from ATPS to BTPS), use <code><a href="reference/lung_vol_atps_btps.html">lung_vol_atps_btps()</a></code> and it will show the result in a tibble.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/lung_vol_atps_btps.html">lung_vol_atps_btps</a></span><span class="op">(</span>
-  temp <span class="op">=</span> <span class="fl">27</span>,
-  FEV1 <span class="op">=</span> <span class="fl">3.5</span>, 
-  FVC <span class="op">=</span> <span class="fl">4.5</span>,
-  PEF <span class="op">=</span> <span class="fl">450</span>,
-  TV <span class="op">=</span> <span class="fl">0.5</span>,
-  IC <span class="op">=</span> <span class="fl">2.5</span>,
-  EC <span class="op">=</span> <span class="fl">2.5</span>,
-  VC <span class="op">=</span> <span class="fl">4.5</span>
-<span class="op">)</span>
-<span class="co">#&gt; # A tibble: 10 × 4</span>
-<span class="co">#&gt;    Parameter  ATPS    BTPS Unit </span>
-<span class="co">#&gt;    &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;</span>
-<span class="co">#&gt;  1 FEV1        3.5   3.72  L    </span>
-<span class="co">#&gt;  2 FVC         4.5   4.78  L    </span>
-<span class="co">#&gt;  3 FEV1/FVC   77.8  82.7   %    </span>
-<span class="co">#&gt;  4 PEF       450   478.    L/min</span>
-<span class="co">#&gt;  5 TV          0.5   0.532 L    </span>
-<span class="co">#&gt;  6 IC          2.5   2.66  L    </span>
-<span class="co">#&gt;  7 IRV         2     2.13  L    </span>
-<span class="co">#&gt;  8 EC          2.5   2.66  L    </span>
-<span class="co">#&gt;  9 ERV         2     2.13  L    </span>
-<span class="co">#&gt; 10 VC          4.5   4.78  L</span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="metabolic-rate--oxygen-consumption-calculator">Metabolic Rate &amp; Oxygen Consumption Calculator<a class="anchor" aria-label="anchor" href="#metabolic-rate--oxygen-consumption-calculator"></a>
-</h2>
-<p>In a laboratory experiment using <a href="https://www.somatco.com/Recording-Spirometer-50-1833-50-1817.pdf" class="external-link">Harvard Spirometer</a>, this package provides functions to calculate metabolic rate and oxygen consumption by input a displacement in x-and y-direction of Harvard spirometer tracing, height and weight of the subject, and environmental conditions which are temperature and barometric pressure.</p>
-<div class="section level3">
-<h3 id="oxygen-consumption">Oxygen Consumption<a class="anchor" aria-label="anchor" href="#oxygen-consumption"></a>
-</h3>
-<p>In Harvard spirometer tracing, horizontal direction (x-direction) represents time (default paper speed = 25 mm/min) whereas vertical direction (y-direction) represents usage of oxygen (1 mm = 30 ml of oxygen). With a little bit of calculation, we can derived an oxygen consumption in unit of L/hr in the <strong>ATPS</strong> condition (<strong>A</strong>mbient <strong>T</strong>emperature and barometric <strong>P</strong>ressure <strong>S</strong>aturated with water vapor condition).</p>
-<p>You can use <code><a href="reference/get_oxycons.html">get_oxycons()</a></code> to calculate oxygen consumption and it will also provide other info printed to R console as well.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">oxycons</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_oxycons.html">get_oxycons</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">15</span>, <span class="co"># displacement in x-direction = 15 mm</span>
-            y <span class="op">=</span> <span class="fl">80</span>, <span class="co"># displacement in y-direction = 80 mm</span>
-            paper_speed <span class="op">=</span> <span class="fl">25</span> <span class="co"># Paper speed of the kymograph = 25 mm/min</span>
-            <span class="op">)</span>
-<span class="co">#&gt; Harvard spirometer tracing:</span>
-<span class="co">#&gt;  - Paper speed = 25 mm/min </span>
-<span class="co">#&gt;  - Time interval = 0.6 min (horizontal displacement = 15 mm)</span>
-<span class="co">#&gt;  - Volume change = 2400 ml (vertical displacement = 80 mm)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Oxygen Consumption at ATPS = 240 L/hr</span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="metabolic-rate">Metabolic Rate<a class="anchor" aria-label="anchor" href="#metabolic-rate"></a>
-</h3>
-<p>To calculate metabolic rate, we must first convert oxygen consumption <em>V̇</em><sub><em>o</em><sub>2</sub></sub> at <strong>ATPS</strong> to <strong>STPD</strong> (<strong>S</strong>tandard <strong>T</strong>emperature of 0°C and a barometric <strong>P</strong>ressure of 760 mmHg, and in a <strong>D</strong>ry state).</p>
-<p>STPD correction factor can be used to convert gas in ATPS to BTPS condition. It has a linear relationship with barometric pressure and temperature.</p>
-<p>Therefore, <code><a href="reference/get_STPD_factor.html">get_STPD_factor()</a></code> can be used to predict STPD factor using <code>baro</code> and <code>temp_c</code> as predictors. (It use multiple linear regression model behind the scene.)</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stpd_760_25</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_STPD_factor.html">get_STPD_factor</a></span><span class="op">(</span>
-  baro <span class="op">=</span> <span class="fl">760</span>, <span class="co"># Barometric pressure at the recording site.</span>
-  temp_c <span class="op">=</span> <span class="fl">25</span> <span class="co"># Temperature in celsius at the recording site.</span>
-  <span class="op">)</span> 
-<span class="co">#&gt; STPD correction factor = 0.883 (760 mmHg, 25 degree celcius)</span></code></pre></div>
-<p>Correction can be made by multiply oxygen consumption <em>V̇</em><sub><em>o</em><sub>2</sub></sub> at ATPS to STPD correction factor.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">oxycons</span> <span class="op">*</span> <span class="va">stpd_760_25</span> <span class="co"># Unit in L/hr</span>
-<span class="co">#&gt; [1] 211.9386</span></code></pre></div>
-<p>Finally, metabolic rate can be calculated by times an oxygen consumption <em>V̇</em><sub><em>o</em><sub>2</sub></sub> (L/hr) at STPD to a caloric equivalent of oxygen (Cal/hr) divided by Body Surface Area (BSA) in m<sup>2</sup>, which can be calculated by <a href="http://www-users.med.cornell.edu/~spon/picu/calc/bsacalc.htm" class="external-link">DuBois &amp; DuBois formula</a> (DuBois D, DuBois EF)</p>
-<!-- $$ -->
-<!-- Met \ Rate \ (Cal/m^2/hr) = \frac{ \dot{V}_{o_2} (L/hr)  \times CalEqi \ O_2 \ (Cal/hr)}{ BSA \ (m^2) }  -->
-<!-- $$ -->
-<div class="figure">
-<embed src="https://latex.codecogs.com/svg.latex?Met%20%5C%20Rate%20%5C%20%28Cal/m%5E2/hr%29%20%3D%20%5Cfrac%7B%20%5Cdot%7BV%7D_%7Bo_2%7D%20%28L/hr%29%20%5Ctimes%20CalEqi%20%5C%20O_2%20%5C%20%28Cal/hr%29%7D%7B%20BSA%20%5C%20%28m%5E2%29%20%7D"></embed><p class="caption">equation</p>
-</div>
-<p><code><a href="reference/get_metabolic_rate.html">get_metabolic_rate()</a></code> is a final wrapper function that calculate metabolic rate; moreover, it also reports metabolic rate along with oxygen consumption and other related parameters printed to the R console.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/get_metabolic_rate.html">get_metabolic_rate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">15</span>, <span class="co"># displacement in x-direction = 15 mm</span>
-                   y <span class="op">=</span> <span class="fl">80</span>, <span class="co"># displacement in y-direction = 80 mm</span>
-                   paper_speed <span class="op">=</span> <span class="fl">25</span>, <span class="co"># Paper speed of the kymograph = 25 mm/min</span>
-                   baro <span class="op">=</span> <span class="fl">760</span>, <span class="co"># Barometric pressure at the recording site.</span>
-                   temp_c <span class="op">=</span> <span class="fl">25</span>, <span class="co"># Temperature in celsius at the recording site.</span>
-                   wt_kg <span class="op">=</span> <span class="fl">70</span>, <span class="co"># Subject's weight in kilogram</span>
-                   ht_cm <span class="op">=</span> <span class="fl">180</span>, <span class="co"># Subject's height in centimetre</span>
-                   cal_eqi_oxygen <span class="op">=</span> <span class="fl">4.825</span> <span class="co"># Caloric equivalent of Oxygen at RQ = 0.82</span>
-<span class="op">)</span>
-<span class="co">#&gt; Harvard spirometer tracing:</span>
-<span class="co">#&gt;  - Paper speed = 25 mm/min </span>
-<span class="co">#&gt;  - Time interval = 0.6 min (horizontal displacement = 15 mm)</span>
-<span class="co">#&gt;  - Volume change = 2400 ml (vertical displacement = 80 mm)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Oxygen Consumption at ATPS = 240 L/hr</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Metabolic rate calculation:</span>
-<span class="co">#&gt;  - STPD correction factor = 0.883 (760 mmHg, 25 degree celcius) </span>
-<span class="co">#&gt;  - Oxygen Consumption at STPD = 211.939 L/hr (0.883 x 240 L/hr)</span>
-<span class="co">#&gt;  - Caloric equivalent of Oxygen = 4.825 Cal/L of Oxygen</span>
-<span class="co">#&gt;  - BSA = 1.886 square metre (wt = 70 kg, ht = 180 cm)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Metabolic Rate = 542.128 Cal/m2/hr</span></code></pre></div>
-</div>
+<p><a href="https://lightbridge-ks.github.io/rslab">rslab</a> is an R package that contain functions for calculate respiratory physiology parameters in the following categories.</p>
+<ul>
+<li><p><strong>ATPS to BTPS converter:</strong> conversion of spirometry lung volume/flows from <em>ATPS</em> (Ambient Temperature and Pressure Saturated) to <em>BTPS</em> (Body Temperature, Pressure, water vapor Saturated)</p></li>
+<li>
+<p><strong>Harvard Spirometer and Metabolic Rate &amp; Oxygen Consumption:</strong></p>
+<ul>
+<li>Calculate metabolic rate and oxygen consumption <em>V̇</em><sub><em>O</em><sub>2</sub></sub> from <a href="https://www.somatco.com/Recording-Spirometer-50-1833-50-1817.pdf" class="external-link">Harvard Spirometer</a> tracing, height and weight of the subject, and environmental conditions which are temperature and barometric pressure.</li>
+<li>Simulate data to plot Harvard spirometer tracing from respiratory parameters such as oxygen consumption, tidal volume, respiratory rate, and random variation can also be added to give a more realistic plot.</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
   </div>
