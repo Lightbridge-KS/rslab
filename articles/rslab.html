@@ -198,6 +198,125 @@ Met \ Rate \ (Cal/m^2/hr) = \frac{ \dot{V}_{o_2} (L/hr)  \times CalEqi \ O_2 \ (
 <span class="co"><span style="color: #00BB00; font-weight: bold;">#&gt; </span></span></code></pre></div>
 </div>
 </div>
+<div class="section level2">
+<h2 id="simulation-of-harvard-spirometer-tracing">Simulation of Harvard Spirometer Tracing<a class="anchor" aria-label="anchor" href="#simulation-of-harvard-spirometer-tracing"></a>
+</h2>
+<div class="section level3">
+<h3 id="simulate-data">Simulate Data<a class="anchor" aria-label="anchor" href="#simulate-data"></a>
+</h3>
+<p>In this section, contrary to the previous, we will simulate data to plot Harvard spirometer tracing from the respiratory parameters.</p>
+<p><br></p>
+<p><code><a href="../reference/sim_Harvard_tracing.html">sim_Harvard_tracing()</a></code> is the function to simulates volume-time tracing data produced by breathing of a hypothetical subject as recorded by the Harvard spirometer.</p>
+<p>The input parameters can be categorized into the followings:</p>
+<ul>
+<li><p><strong>Function to Simulate 1 Respiratory Cycle:</strong> as supply by the argument <code>f</code>, the default, currently, is a cosine (<code>cos</code>) function which might give a rough representation of 1 respiratory cycle. (It is not a physiologic representation of respiratory waveform. I still need more research on this.)</p></li>
+<li><p><strong>Amplitude and Wavelength of the sinusoidal function:</strong> this can be calculated by knowing the Respiratory Rate (<code>RR</code>), Tidal Volume (<code>TV</code>), and paper speed (<code>paper_speed</code>)</p></li>
+<li>
+<p><strong>Slope and Y-intercept of an Oxygen Line:</strong> the oxygen line, i.e., the linear line fitted from the lowest points of each respiratory waveform, can be simulated by knowing its slope (<span class="math inline">\(\beta_1\)</span>), y-intercept (<span class="math inline">\(\beta_0\)</span>), and random error term (<span class="math inline">\(\epsilon\)</span>).</p>
+<ul>
+<li>
+<strong>Slope (<span class="math inline">\(\beta_1\)</span>)</strong> can be calculated from an oxygen consumption (argument <code>oxycons</code>) and paper speed (<code>paper_speed</code>).</li>
+<li>
+<strong>Y-intercept (<span class="math inline">\(\beta_0\)</span>)</strong> can be specified directly from the user.</li>
+<li>And, <strong>a random error (<span class="math inline">\(\epsilon\)</span>)</strong> can be generated from a Gaussian distribution with <span class="math inline">\(\mu\)</span> = 0, and <code>sd</code> as specified.</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tracing_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sim_Harvard_tracing.html">sim_Harvard_tracing</a></span><span class="op">(</span>
+  f <span class="op">=</span> <span class="st">"cos"</span>,         <span class="co"># Cosine function to represent 1 respiratory cycle</span>
+  t_start <span class="op">=</span> <span class="fl">0</span>,       <span class="co"># First `x` value will be started at time = 0 minute</span>
+  t_end <span class="op">=</span> <span class="fl">1</span>,         <span class="co"># Last `x` value will be ended at time = 1 minute</span>
+  paper_speed <span class="op">=</span> <span class="fl">25</span>,  <span class="co"># Paper speed in mm/minute</span>
+  y_int_O2_line <span class="op">=</span> <span class="fl">5</span>, <span class="co"># Y-intercept of an oxygen line</span>
+  oxycons <span class="op">=</span> <span class="fl">10</span>,      <span class="co"># Oxygen consumption is 10 L/hr (default unit)</span>
+  TV <span class="op">=</span> <span class="fl">500</span>,          <span class="co"># Tidal Volume is 500 ml</span>
+  RR <span class="op">=</span> <span class="fl">20</span>,           <span class="co"># Respiratory Rate is 20 /min</span>
+  seq_x_by <span class="op">=</span> <span class="fl">0.01</span>,   <span class="co"># This control resolution of simulated data</span>
+  epsilon_sd <span class="op">=</span> <span class="fl">0.3</span>,  <span class="co"># Add random variation sampled from Gaussian distribution with mean = 0, sd = 0.3</span>
+  seed <span class="op">=</span> <span class="fl">1</span>,          <span class="co"># Seed to generate the random variation</span>
+<span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tracing_df</span><span class="op">)</span>
+<span class="co">#&gt;      x        y y_O2_line</span>
+<span class="co">#&gt; 1 0.00 4.812064  4.812064</span>
+<span class="co">#&gt; 2 0.01 5.067841  5.057315</span>
+<span class="co">#&gt; 3 0.02 4.795831  4.753756</span>
+<span class="co">#&gt; 4 0.03 5.579820  5.485251</span>
+<span class="co">#&gt; 5 0.04 5.275616  5.107741</span>
+<span class="co">#&gt; 6 0.05 5.026778  4.764971</span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="plot">Plot<a class="anchor" aria-label="anchor" href="#plot"></a>
+</h3>
+<p>With a little help of <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> package, the tracing can then be visualized.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/stefano-meschiari/latex2exp" class="external-link">latex2exp</a></span><span class="op">)</span>
+
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">tracing_df</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_path</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y_O2_line</span><span class="op">)</span>, method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="st">"y~x"</span>,
+              linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expand_limits.html" class="external-link">expand_limits</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Simulation of Harvard Spirometer Tracing"</span>,
+        subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/latex2exp/man/TeX.html" class="external-link">TeX</a></span><span class="op">(</span><span class="st">"(TV = 500 ml, RR = 20/min, $\\dot{V}_{O_2}$ = 10 L/hr)"</span><span class="op">)</span>,
+        x <span class="op">=</span> <span class="st">"x (mm)"</span>, y <span class="op">=</span> <span class="st">"y (mm)"</span><span class="op">)</span></code></pre></div>
+<p><img src="rslab_files/figure-html/unnamed-chunk-6-1.png" width="100%"></p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="math-behind-the-simulation-of-harvard-spirometer-tracing">Math Behind the Simulation of Harvard Spirometer Tracing<a class="anchor" aria-label="anchor" href="#math-behind-the-simulation-of-harvard-spirometer-tracing"></a>
+</h2>
+<p>To be more explicit, I will provide an underlying mathematical formula that produces data to simulate Harvard spirometer tracing in the following sections.</p>
+<p><br></p>
+<p>The goal here is to build a function that yields an output:</p>
+<ul>
+<li>
+<span class="math inline">\(y\)</span> = y-axis values (mm)</li>
+</ul>
+<p>from inputs:</p>
+<ul>
+<li><p><span class="math inline">\(x\)</span> = x-axis values (mm)</p></li>
+<li><p><span class="math inline">\(V_T\)</span> = Tidal Volumes (ml)</p></li>
+<li><p><span class="math inline">\(f_R\)</span> = Respiratory Rate (cycle/min)</p></li>
+<li><p><span class="math inline">\(\dot{V}_{O_2}\)</span> = Oxygen consumption (L/hr)</p></li>
+<li><p><span class="math inline">\(v_{paper}\)</span> = Paper Speed (mm/min)</p></li>
+</ul>
+<p><br></p>
+<p><span class="math inline">\(y\)</span> can be decomposed into the sum of its 2 components: the respiratory waveform (<span class="math inline">\(y_{wave}\)</span>) and the linear components (<span class="math inline">\(y_{lin}\)</span>) which is the oxygen line.</p>
+<p><span class="math display">\[
+y = y_{wave} + y_{lin}
+\]</span></p>
+<p>Next, I will provide methods to build <span class="math inline">\(y_{wave}\)</span> and then <span class="math inline">\(y_{lin}\)</span>.</p>
+<div class="section level3">
+<h3 id="the-respiratory-waveform-y_wave">The Respiratory Waveform (<span class="math inline">\(y_{wave}\)</span>)<a class="anchor" aria-label="anchor" href="#the-respiratory-waveform-y_wave"></a>
+</h3>
+<p>For simplicity, let’s assume that 1 respiratory wave can be generated by using trigonometric sinusoidal function. In this case I will use the cosine function <code><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos()</a></code>.</p>
+<p><br></p>
+<p>Thus, the <em>respiratory waveform</em> can be written as:</p>
+<p><span class="math display">\[
+y_{wave} = A \times cos(\frac{2\pi   x}{\lambda})
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li>
+<span class="math inline">\(A\)</span> = amplitude of wave (mm)</li>
+<li>
+<span class="math inline">\(\lambda\)</span> = wave length (mm)</li>
+<li>
+<span class="math inline">\(x\)</span> = x-axis values (mm)</li>
+</ul>
+<p>Given that 1 mm in the y-axis = 30 ml. and the amplitude (<span class="math inline">\(A\)</span>) is half of tidal volume (<span class="math inline">\(V_T\)</span>),</p>
+<p>Amplitude (<span class="math inline">\(A\)</span>) can be expressed in terms of tidal volume (<span class="math inline">\(V_T\)</span>) in ml.</p>
+<p><span class="math display">\[
+A = \frac{-TV}{2 \times 30}
+\]</span></p>
+<p><span class="math inline">\(2\)</span> was included in the denominator because amplitude equals the half of tidal volume, and the minus sign was added to flip the cosine function horizontally.</p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
