@@ -22,9 +22,12 @@ Imports:
     stats,
     simWaves (>= 0.0.0.9000)
 Suggests: 
+    rmarkdown,
+    knitr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 LazyData: true
 URL: https://lightbridge-ks.github.io/rslab
 Remotes: 
     Lightbridge-KS/simWaves
+VignetteBuilder: knitr
