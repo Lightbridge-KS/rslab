@@ -45,8 +45,8 @@ sim_Harvard_tracing <- function(f = "cos",
 
   oxycons_unit <- match.arg(oxycons_unit)
   # X
-  xmin <- 25 * t_start
-  xmax <- 25 * t_end
+  xmin <- paper_speed * t_start
+  xmax <- paper_speed * t_end
   # Y
   ## Unit of Oxygen Consumption
   unit_conv <- switch (oxycons_unit,
@@ -54,7 +54,7 @@ sim_Harvard_tracing <- function(f = "cos",
                        "ml/min" = { 1 }
   )
   # Wave length & Amplitude
-  lambda <- 25 / RR
+  lambda <- paper_speed / RR
   amp <- (-TV)/(2*30) # negative, so that cosine will filp upward
 
   # Linear Params
@@ -95,4 +95,6 @@ sim_Harvard_tracing <- function(f = "cos",
 
   df_out
 }
+
+
 
