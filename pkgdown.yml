@@ -3,7 +3,7 @@ pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
   rslab: rslab.html
-last_built: 2022-01-03T17:26Z
+last_built: 2022-01-03T17:35Z
 urls:
   reference: https://lightbridge-ks.github.io/rslab/reference
   article: https://lightbridge-ks.github.io/rslab/articles
