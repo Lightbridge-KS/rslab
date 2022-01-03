@@ -21,7 +21,7 @@
 #' @export
 #'
 #' @examples
-#' lung_vol_atps_btps(FEV1 = 5, FVC = 10, PEF = 4, TV = 9, IC = 10, EC = 12, VC = 10)
+#' lung_vol_atps_btps(temp = 30, FEV1 = 5, FVC = 10, PEF = 4, TV = 9, IC = 10, EC = 12, VC = 10)
 lung_vol_atps_btps <- function(temp = NA,
                                FEV1 = NA,
                                FVC = NA,

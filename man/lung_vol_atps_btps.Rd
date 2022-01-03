@@ -40,5 +40,5 @@ This function converts several lung volume parameters at ATPS (Ambient Temperatu
 lung volume at BTPS (Body Temperature, Pressure, water vapor Saturated).
 }
 \examples{
-lung_vol_atps_btps(FEV1 = 5, FVC = 10, PEF = 4, TV = 9, IC = 10, EC = 12, VC = 10)
+lung_vol_atps_btps(temp = 30, FEV1 = 5, FVC = 10, PEF = 4, TV = 9, IC = 10, EC = 12, VC = 10)
 }
