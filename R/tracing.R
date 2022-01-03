@@ -47,6 +47,7 @@ sim_Harvard_tracing <- function(f = "cos",
   # X
   xmin <- paper_speed * t_start
   xmax <- paper_speed * t_end
+  x_delta <- xmax - xmin
   # Y
   ## Unit of Oxygen Consumption
   unit_conv <- switch (oxycons_unit,
@@ -60,6 +61,8 @@ sim_Harvard_tracing <- function(f = "cos",
   # Linear Params
   slope <- (oxycons/paper_speed) * (1/30) * unit_conv
   y_intercept <- y_int_O2_line + abs(amp)
+
+  y_delta <- slope * x_delta
 
   # Oxygen Line
   x <- seq(xmin, xmax, by = seq_x_by)
@@ -95,6 +98,7 @@ sim_Harvard_tracing <- function(f = "cos",
 
   df_out
 }
+
 
 
 
