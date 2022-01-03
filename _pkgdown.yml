@@ -11,3 +11,30 @@ navbar:
    - icon: fa-github
      href: https://github.com/Lightbridge-KS/rslab
 
+
+reference:
+- subtitle: ATPS to BTPS converter
+  desc: >
+    Funtions to convert lung volumes/flows from ATPS to BTPS.
+  contents:
+  - '`lung_vol_atps_btps`'
+  - '`get_btps_factor`'
+  - '`btps_df`'
+
+- subtitle: Metabolic Rate & Oxygen Consumption Calculator
+  desc: >
+    Funtions to calculate metabolic rate and oxygen consumption from Harvard Spirometer tracing.
+  contents:
+  - '`get_metabolic_rate`'
+  - '`get_oxycons`'
+  - '`get_STPD_factor`'
+  - '`get_BSA`'
+  - '`stpd_df`'
+  - '`stpd_df_wide`'
+
+- subtitle: Simulate data to plot Harvard spirometer tracing
+  desc: >
+    Funtions to simulate data to plot Harvard spirometer tracing from respiratory parameters.
+  contents:
+  - '`sim_Harvard_tracing`'
+  - '`tracing_info`'
