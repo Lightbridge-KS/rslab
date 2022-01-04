@@ -1,5 +1,10 @@
 ---
 title: "The Modelling of Harvard Spirometer Tracing"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{The Modelling of Harvard Spirometer Tracing}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -52,7 +57,7 @@ $$
 Next, I will provide methods to build $f_{wave}(x)$ and then $f_{O_2line}(x)$.
 
 
-### The Respiratory Waves Function
+## The Respiratory Waves Function
 
 For simplicity, respiratory waves function $f_{wave}(x)$ will be modeled from trigonometric sinusoidal function. In this case, I will use the cosine function `cos()`.
 
@@ -113,7 +118,7 @@ Where:
 
 
 
-### The Oxygen Line Function
+## The Oxygen Line Function
 
 Assuming that the rate of oxygen used by the subject is constant, the function that represents oxygen consumption $f_{O_2line}$ could be modeled by the linear equation.
 
@@ -152,7 +157,7 @@ Where:
 
 
 
-### The Harvard Spirometer Tracing Function
+## The Harvard Spirometer Tracing Function
 
 We have constructed the respiratory waves function $f_{wave}(x)$:
 
@@ -178,7 +183,7 @@ f_{tracing}(x) = f_{wave}(x) + f_{O_2line}(x)
 $$
 
 
-substituting $f_{wave}(x)$ and $f_{O_2line}(x)$ with above equations yields the final equation that produce Harvard spirometer tracing $f_{tracing}(x)$.
+substituting $f_{wave}(x)$ and $f_{O_2line}(x)$ with above equations yields the final equation that produce Harvard spirometer tracing.
 
 \
 

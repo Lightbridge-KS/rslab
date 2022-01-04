@@ -18,7 +18,7 @@ articles:
   navbar: ~
   desc: How to construct mathematical model of Harvard Spirometer Tracing.
   contents:
-  - '`articles/mod-tracing`'
+  - '`mod-tracing`'
 
 
 reference:
