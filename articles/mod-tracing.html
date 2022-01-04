@@ -122,9 +122,9 @@ f_{tracing}(x) = f_{wave}(x) + f_{O_2line}(x)
 \]</span></p>
 <p><br></p>
 <p>Next, I will provide methods to build <span class="math inline">\(f_{wave}(x)\)</span> and then <span class="math inline">\(f_{O_2line}(x)\)</span>.</p>
-<div class="section level3">
-<h3 id="the-respiratory-waves-function">The Respiratory Waves Function<a class="anchor" aria-label="anchor" href="#the-respiratory-waves-function"></a>
-</h3>
+<div class="section level2">
+<h2 id="the-respiratory-waves-function">The Respiratory Waves Function<a class="anchor" aria-label="anchor" href="#the-respiratory-waves-function"></a>
+</h2>
 <p>For simplicity, respiratory waves function <span class="math inline">\(f_{wave}(x)\)</span> will be modeled from trigonometric sinusoidal function. In this case, I will use the cosine function <code><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos()</a></code>.</p>
 <p>The <em>general form</em> of cosine function that models position <span class="math inline">\(y\)</span> as a function of the position <span class="math inline">\(x\)</span> can be written as:</p>
 <p><br></p>
@@ -168,9 +168,9 @@ f_{wave}(x) = \frac{V_T}{60} \times cos(\frac{2\pi f_R}{v_{paper}} \times x)
 <span class="math inline">\(v_{paper}\)</span> = Paper Speed (mm/min)</li>
 </ul>
 </div>
-<div class="section level3">
-<h3 id="the-oxygen-line-function">The Oxygen Line Function<a class="anchor" aria-label="anchor" href="#the-oxygen-line-function"></a>
-</h3>
+<div class="section level2">
+<h2 id="the-oxygen-line-function">The Oxygen Line Function<a class="anchor" aria-label="anchor" href="#the-oxygen-line-function"></a>
+</h2>
 <p>Assuming that the rate of oxygen used by the subject is constant, the function that represents oxygen consumption <span class="math inline">\(f_{O_2line}\)</span> could be modeled by the linear equation.</p>
 <p>Since The simple linear equation is expressed in the following form:</p>
 <p><span class="math display">\[
@@ -202,9 +202,9 @@ f_{O_2line}(x) = \beta_0 + \frac{5  \dot{V}_{O_2} }{ 9 v_{paper} } \times x
 <span class="math inline">\(v_{paper}\)</span> = Paper Speed (mm/min)</li>
 </ul>
 </div>
-<div class="section level3">
-<h3 id="the-harvard-spirometer-tracing-function">The Harvard Spirometer Tracing Function<a class="anchor" aria-label="anchor" href="#the-harvard-spirometer-tracing-function"></a>
-</h3>
+<div class="section level2">
+<h2 id="the-harvard-spirometer-tracing-function">The Harvard Spirometer Tracing Function<a class="anchor" aria-label="anchor" href="#the-harvard-spirometer-tracing-function"></a>
+</h2>
 <p>We have constructed the respiratory waves function <span class="math inline">\(f_{wave}(x)\)</span>:</p>
 <p><br></p>
 <p><span class="math display">\[
@@ -219,7 +219,7 @@ f_{O_2line}(x) = \beta_0 + \frac{5  \dot{V}_{O_2} }{ 9 v_{paper} } \times x
 <p><span class="math display">\[
 f_{tracing}(x) = f_{wave}(x) + f_{O_2line}(x) 
 \]</span></p>
-<p>substituting <span class="math inline">\(f_{wave}(x)\)</span> and <span class="math inline">\(f_{O_2line}(x)\)</span> with above equations yields the final equation that produce Harvard spirometer tracing <span class="math inline">\(f_{tracing}(x)\)</span>.</p>
+<p>substituting <span class="math inline">\(f_{wave}(x)\)</span> and <span class="math inline">\(f_{O_2line}(x)\)</span> with above equations yields the final equation that produce Harvard spirometer tracing.</p>
 <p><br></p>
 <p><span class="math display">\[
 y(x) = f_{tracing}(x) = \frac{V_T}{60} . cos(\frac{2\pi x f_R }{v_{paper}}) + \frac{5 x \dot{V}_{O_2} }{ 9 v_{paper} } + \beta_0 
@@ -257,7 +257,9 @@ y(x) = f_{tracing}(x) = \frac{V_T}{60} . cos(\frac{2\pi x f_R }{v_{paper}}) + \f
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
