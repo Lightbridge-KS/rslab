@@ -12,7 +12,17 @@ navbar:
      href: https://github.com/Lightbridge-KS/rslab
 
 
+# https://pkgdown.r-lib.org/dev/reference/build_articles.html#index-and-navbar
+articles:
+- title: Modeling Harvard Spirometer Tracing
+  navbar: ~
+  desc: How to construct mathematical model of Harvard Spirometer Tracing.
+  contents:
+  - '`articles/mod-tracing`'
+
+
 reference:
+- title: rslab package
 - subtitle: ATPS to BTPS converter
   desc: >
     Funtions to convert lung volumes/flows from ATPS to BTPS.
@@ -38,3 +48,4 @@ reference:
   contents:
   - '`sim_Harvard_tracing`'
   - '`tracing_info`'
+

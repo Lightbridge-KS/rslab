@@ -11,3 +11,4 @@
 ^pkgdown$
 ^\.github$
 ^my_tutorial$
+^vignettes/articles$
