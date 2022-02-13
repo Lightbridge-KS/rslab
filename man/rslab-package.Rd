@@ -11,7 +11,8 @@ This package contains functions related to respiratory system physiology such as
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://lightbridge-ks.github.io/rslab}
+  \item \url{https://github.com/Lightbridge-KS/rslab}
+  \item Report bugs at \url{https://github.com/Lightbridge-KS/rslab/issues}
 }
 
 }
