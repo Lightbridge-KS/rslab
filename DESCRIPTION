@@ -29,7 +29,8 @@ Suggests:
     latex2exp
 Config/testthat/edition: 3
 LazyData: true
-URL: https://lightbridge-ks.github.io/rslab
+URL: https://github.com/Lightbridge-KS/rslab
 Remotes: 
     Lightbridge-KS/simWaves
 VignetteBuilder: knitr
+BugReports: https://github.com/Lightbridge-KS/rslab/issues
