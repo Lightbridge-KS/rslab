@@ -81,7 +81,7 @@
       <h1 data-toc-skip>Introduction to rslab</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/Lightbridge-KS/rslab/blob/HEAD/vignettes/rslab.Rmd" class="external-link"><code>vignettes/rslab.Rmd</code></a></small>
       <div class="hidden name"><code>rslab.Rmd</code></div>
 
     </div>
@@ -98,7 +98,7 @@
 <p><a href="https://nddmed.com/_Resources/Persistent/8a716ac3fd123ce0becd7b56596582d4fc4c0c47/appnote-btps-correction-v01r.pdf" class="external-link">BTPS correction factor</a> is a coefficient used to convert flow and volume measured at ambient conditions (ATPS) to the conditions within the lungs (BTPS).</p>
 <p><code><a href="../reference/get_btps_factor.html">get_btps_factor()</a></code> is a function to obtain the BTPS correction factor.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lightbridge-ks.github.io/rslab">rslab</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Lightbridge-KS/rslab" class="external-link">rslab</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># BTPS correction factor at room temperature = 27 degree celsius</span>
 <span class="va">btps_factor27</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_btps_factor.html">get_btps_factor</a></span><span class="op">(</span>temp <span class="op">=</span> <span class="fl">27</span><span class="op">)</span>
@@ -264,7 +264,7 @@ Met \ Rate \ (Cal/m^2/hr) = \frac{ \dot{V}_{o_2} (L/hr)  \times CalEqi \ O_2 \ (
 <p>With a little help of <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> package, the tracing can then be visualized.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/stefano-meschiari/latex2exp" class="external-link">latex2exp</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stefanom.io/latex2exp/" class="external-link">latex2exp</a></span><span class="op">)</span>
 
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -274,7 +274,7 @@ Met \ Rate \ (Cal/m^2/hr) = \frac{ \dot{V}_{o_2} (L/hr)  \times CalEqi \ O_2 \ (
               linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expand_limits.html" class="external-link">expand_limits</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Simulation of Harvard Spirometer Tracing"</span>,
-        subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/latex2exp/man/TeX.html" class="external-link">TeX</a></span><span class="op">(</span><span class="st">"(TV = 500 ml, RR = 20/min, $\\dot{V}_{O_2}$ = 10 L/hr)"</span><span class="op">)</span>,
+        subtitle <span class="op">=</span> <span class="fu"><a href="https://www.stefanom.io/latex2exp/reference/TeX.html" class="external-link">TeX</a></span><span class="op">(</span><span class="st">"(TV = 500 ml, RR = 20/min, $\\dot{V}_{O_2}$ = 10 L/hr)"</span><span class="op">)</span>,
         x <span class="op">=</span> <span class="st">"x (mm)"</span>, y <span class="op">=</span> <span class="st">"y (mm)"</span><span class="op">)</span></code></pre></div>
 <p><img src="rslab_files/figure-html/unnamed-chunk-6-1.png" width="100%"></p>
 </div>
@@ -303,7 +303,7 @@ Met \ Rate \ (Cal/m^2/hr) = \frac{ \dot{V}_{o_2} (L/hr)  \times CalEqi \ O_2 \ (
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
